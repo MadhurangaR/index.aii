@@ -48,9 +48,15 @@ A complete, high-converting, modern, and responsive website built for **Ranjani 
    - Includes a "Leave a Review" modal where customers can submit their own ratings and comments stored locally.
 
 8. **Contact, Shop Outlet & FAQ Section**
-   - Outlet location, daily opening hours, telephone hotline, and WhatsApp links.
+   - Outlet location at `167/1, Meewala, Nittambuwa`, daily opening hours (`07:00 AM – 09:00 PM`), live store status indicator, telephone hotline (`075 772 8547`), and WhatsApp links.
    - Direct inquiry / bulk hotel catering order form.
    - Interactive FAQ accordion addressing freshness, customization, and delivery zones.
+
+9. **Futuristic AI Theme Background & Neural Canvas**
+   - **Interactive Neural Network Canvas**: Luminous floating nodes that dynamically form synaptic connections and react to mouse movement.
+   - **Cosmic Cyber Grid & Aurora Lights**: Ambient floating glowing orbs (electric cyan, violet, and crimson) creating a cutting-edge AI atmosphere.
+   - **Glassmorphic Cyber Cards**: Translucent frosted-glass panels with subtle neon border glows and cybernetic typography.
+   - **Instant Theme Switcher**: Easily toggle between the futuristic **AI Mode** and the daylight **Classic Farm Theme** via the header or mobile drawer.
 
 ---
 
@@ -88,6 +94,10 @@ const SHOP_CONFIG = {
   phone: '075 772 8547',
   whatsappNumber: '94757728547', // WhatsApp number (0757728547)
   address: '167/1, Meewala, Nittambuwa',
+  openingHour: 7,                 // 07:00 (7:00 AM)
+  closingHour: 21,                // 21:00 (09:00 PM)
+  openTimeStr: '07:00 AM',
+  closeTimeStr: '09:00 PM',
   currencySymbol: 'Rs.',          // Change to '₹', '$', 'LKR' or your currency
   freeDeliveryThreshold: 3500,    // Amount for free delivery
   standardDeliveryFee: 250,       // Default delivery fee

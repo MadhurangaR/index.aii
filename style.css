@@ -297,6 +297,276 @@ ul {
 }
 
 /* --------------------------------------------------------------------------
+   Live Shop Status Indicators (07:00 - 21:00)
+   -------------------------------------------------------------------------- */
+.shop-live-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 11px;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: all var(--transition-fast);
+}
+
+.status-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* Status: Open (Green) */
+.status-open {
+  background: rgba(34, 197, 94, 0.18);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.4);
+}
+
+.status-open .status-live-dot {
+  background-color: #22c55e;
+  box-shadow: 0 0 0 rgba(34, 197, 94, 0.5);
+  animation: pulseGreenDot 1.6s infinite;
+}
+
+/* Status: Closing Soon (Amber) */
+.status-closing-soon {
+  background: rgba(245, 158, 11, 0.18);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.45);
+}
+
+.status-closing-soon .status-live-dot {
+  background-color: #f59e0b;
+  box-shadow: 0 0 0 rgba(245, 158, 11, 0.5);
+  animation: pulseAmberDot 1.6s infinite;
+}
+
+/* Status: Closed (Red) */
+.status-closed {
+  background: rgba(239, 68, 68, 0.18);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.status-closed .status-live-dot {
+  background-color: #ef4444;
+  box-shadow: 0 0 0 rgba(239, 68, 68, 0.5);
+  animation: pulseRedDot 2.2s infinite;
+}
+
+@keyframes pulseGreenDot {
+  0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.8); }
+  70% { box-shadow: 0 0 0 7px rgba(34, 197, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+@keyframes pulseAmberDot {
+  0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.8); }
+  70% { box-shadow: 0 0 0 7px rgba(245, 158, 11, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+}
+
+@keyframes pulseRedDot {
+  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.8); }
+  70% { box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+/* Header Live Badge */
+.header-live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 700;
+  transition: all var(--transition-fast);
+}
+
+.header-live-badge.status-open {
+  background: #ECFDF5;
+  color: #065F46;
+  border: 1px solid #A7F3D0;
+}
+
+.header-live-badge.status-closing-soon {
+  background: #FFFBEB;
+  color: #92400E;
+  border: 1px solid #FDE68A;
+}
+
+.header-live-badge.status-closed {
+  background: #FEF2F2;
+  color: #991B1B;
+  border: 1px solid #FECACA;
+}
+
+.header-live-badge .live-label {
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.header-live-badge .live-sub {
+  font-weight: 500;
+  opacity: 0.85;
+  font-size: 0.75rem;
+}
+
+/* Drawer Status Box */
+.drawer-status-box {
+  margin: 12px 0 6px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.drawer-status-box.status-open {
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  color: #065F46;
+}
+
+.drawer-status-box.status-closed {
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  color: #991B1B;
+}
+
+.drawer-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 800;
+  font-size: 0.85rem;
+}
+
+.drawer-status-box small {
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+
+/* Contact / Location Hours Section */
+.contact-hours-wrap {
+  width: 100%;
+}
+
+.hours-header-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.shop-hours-live-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.shop-hours-live-tag.status-open {
+  background: #DCFCE7;
+  color: #15803D;
+  border: 1px solid #86EFAC;
+}
+
+.shop-hours-live-tag.status-closing-soon {
+  background: #FEF3C7;
+  color: #B45309;
+  border: 1px solid #FCD34D;
+}
+
+.shop-hours-live-tag.status-closed {
+  background: #FEE2E2;
+  color: #B91C1C;
+  border: 1px solid #FCA5A5;
+}
+
+.hours-schedule {
+  font-size: 0.92rem;
+  color: var(--neutral-800);
+  margin-bottom: 4px;
+}
+
+.live-clock-sub {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--neutral-600);
+  background: var(--neutral-100);
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  margin-top: 4px;
+}
+
+.live-clock-sub strong {
+  color: var(--primary);
+  font-family: monospace;
+  font-size: 0.88rem;
+}
+
+/* Store Status in Checkout Modal */
+.store-status-checkout-note {
+  display: none;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  margin-bottom: 18px;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.store-status-checkout-note .note-icon {
+  font-size: 1.2rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.store-status-checkout-note.status-open-note {
+  background: #ECFDF5;
+  border: 1.5px solid #A7F3D0;
+  color: #065F46;
+}
+
+.store-status-checkout-note.status-open-note .note-icon {
+  color: #10B981;
+}
+
+.store-status-checkout-note.status-closing-note {
+  background: #FFFBEB;
+  border: 1.5px solid #FDE68A;
+  color: #92400E;
+}
+
+.store-status-checkout-note.status-closing-note .note-icon {
+  color: #F59E0B;
+}
+
+.store-status-checkout-note.status-closed-note {
+  background: #FEF2F2;
+  border: 1.5px solid #FECACA;
+  color: #991B1B;
+}
+
+.store-status-checkout-note.status-closed-note .note-icon {
+  color: #EF4444;
+}
+
+/* --------------------------------------------------------------------------
    5. Site Header & Navigation
    -------------------------------------------------------------------------- */
 .site-header {
@@ -2880,6 +3150,10 @@ ul {
 }
 
 @media (max-width: 768px) {
+  .header-live-badge {
+    display: none;
+  }
+
   .top-bar-left .divider,
   .top-bar-left span:nth-child(3),
   .top-bar-right .top-location {
@@ -2937,3 +3211,704 @@ ul {
     gap: 14px;
   }
 }
+
+/* ==========================================================================
+   22. Futuristic AI Theme & Neural Particle Background Engine
+   ========================================================================== */
+
+/* Background Wrapper */
+.ai-background-wrapper {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+body.ai-theme .ai-background-wrapper {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Neural Network Interactive Canvas */
+.ai-neural-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Cyber Matrix Perspective Grid */
+.ai-cyber-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0, 229, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-position: center center;
+  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.8) 20%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.8) 20%, transparent 85%);
+}
+
+/* Glowing Ambient Auroras / Orbs */
+.ai-glowing-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.ai-glowing-orb.orb-1 {
+  width: 520px;
+  height: 520px;
+  top: -120px;
+  left: -120px;
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.28) 0%, rgba(37, 99, 235, 0.15) 60%, transparent 100%);
+  animation: floatOrb1 22s infinite ease-in-out alternate;
+}
+
+.ai-glowing-orb.orb-2 {
+  width: 600px;
+  height: 600px;
+  bottom: -150px;
+  right: -150px;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.25) 0%, rgba(217, 70, 239, 0.12) 60%, transparent 100%);
+  animation: floatOrb2 26s infinite ease-in-out alternate;
+}
+
+.ai-glowing-orb.orb-3 {
+  width: 450px;
+  height: 450px;
+  top: 40%;
+  left: 35%;
+  background: radial-gradient(circle, rgba(255, 51, 102, 0.18) 0%, rgba(245, 158, 11, 0.08) 60%, transparent 100%);
+  animation: floatOrb3 18s infinite ease-in-out alternate;
+}
+
+@keyframes floatOrb1 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(120px, 80px) scale(1.15); }
+  100% { transform: translate(-40px, 140px) scale(0.95); }
+}
+
+@keyframes floatOrb2 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-100px, -90px) scale(1.2); }
+  100% { transform: translate(50px, -60px) scale(0.9); }
+}
+
+@keyframes floatOrb3 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-80px, 100px) scale(1.25); }
+  100% { transform: translate(90px, -50px) scale(0.9); }
+}
+
+/* Atmospheric Edge Vignette */
+.ai-cyber-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(6, 9, 19, 0.9) 100%);
+}
+
+/* AI Theme Header Toggle Button */
+.ai-theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 0.84rem;
+  background: rgba(0, 229, 255, 0.1);
+  color: #00E5FF;
+  border: 1.5px solid rgba(0, 229, 255, 0.4);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.2);
+}
+
+.ai-theme-toggle-btn:hover {
+  background: linear-gradient(135deg, #00E5FF 0%, #A855F7 100%);
+  color: #060913;
+  box-shadow: 0 0 22px rgba(0, 229, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+.ai-theme-toggle-btn i {
+  color: #FF3366;
+  font-size: 0.9rem;
+  animation: sparkleSpin 4s infinite linear;
+}
+
+@keyframes sparkleSpin {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.2); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Mobile Drawer AI Toggle Row */
+.drawer-ai-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: rgba(0, 229, 255, 0.08);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  border-radius: var(--radius-md);
+  margin: 10px 0;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #00E5FF;
+}
+
+.drawer-toggle-switch {
+  width: 44px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-full);
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  border: none;
+}
+
+.drawer-toggle-switch .switch-ball {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background: #FFF;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.drawer-toggle-switch.active {
+  background: #00E5FF;
+}
+
+.drawer-toggle-switch.active .switch-ball {
+  transform: translateX(20px);
+}
+
+/* ==========================================================================
+   23. AI Theme Overrides (Applied when body has .ai-theme)
+   ========================================================================== */
+body.ai-theme {
+  --bg-cream: #060913;
+  --white: #0c1424;
+  --neutral-900: #F8FAFC;
+  --neutral-800: #E2E8F0;
+  --neutral-700: #CBD5E1;
+  --neutral-600: #94A3B8;
+  --neutral-400: #64748B;
+  --neutral-300: rgba(255, 255, 255, 0.15);
+  --neutral-200: rgba(255, 255, 255, 0.08);
+  --neutral-100: rgba(255, 255, 255, 0.04);
+  --neutral-50: #080E1C;
+
+  background-color: #060913;
+  color: #E2E8F0;
+}
+
+/* Top bar in AI Theme */
+body.ai-theme .top-bar {
+  background: rgba(4, 7, 15, 0.9);
+  border-bottom: 1px solid rgba(0, 229, 255, 0.12);
+}
+
+/* Header in AI Theme */
+body.ai-theme .site-header {
+  background: rgba(6, 9, 19, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0, 229, 255, 0.15);
+}
+
+body.ai-theme .brand-title {
+  color: #00E5FF;
+  text-shadow: 0 0 14px rgba(0, 229, 255, 0.4);
+}
+
+body.ai-theme .brand-subtitle {
+  color: #F8FAFC;
+}
+
+body.ai-theme .brand-tagline {
+  color: #94A3B8;
+}
+
+body.ai-theme .nav-link {
+  color: #CBD5E1;
+}
+
+body.ai-theme .nav-link:hover,
+body.ai-theme .nav-link.active {
+  color: #00E5FF;
+}
+
+body.ai-theme .nav-link::after {
+  background: #00E5FF;
+  box-shadow: 0 0 8px #00E5FF;
+}
+
+body.ai-theme .cart-btn {
+  background: rgba(0, 229, 255, 0.12);
+  color: #00E5FF;
+  border-color: rgba(0, 229, 255, 0.35);
+}
+
+body.ai-theme .cart-count {
+  background: #FF3366;
+  box-shadow: 0 0 10px rgba(255, 51, 102, 0.5);
+}
+
+body.ai-theme .search-toggle-btn {
+  background: rgba(255, 255, 255, 0.06);
+  color: #CBD5E1;
+}
+
+body.ai-theme .search-toggle-btn:hover {
+  background: rgba(0, 229, 255, 0.15);
+  color: #00E5FF;
+}
+
+body.ai-theme .header-search-bar {
+  background: #0B1220;
+  border-top-color: rgba(0, 229, 255, 0.2);
+}
+
+body.ai-theme .search-bar-inner input {
+  background: #060913;
+  color: #FFF;
+  border-color: rgba(0, 229, 255, 0.25);
+}
+
+body.ai-theme .search-bar-inner input:focus {
+  border-color: #00E5FF;
+  box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.2);
+}
+
+/* Hero Section in AI Theme */
+body.ai-theme .hero-section {
+  background: transparent;
+  border-bottom: 1px solid rgba(0, 229, 255, 0.12);
+}
+
+body.ai-theme .hero-title {
+  color: #F8FAFC;
+}
+
+body.ai-theme .hero-title .highlight-text {
+  background: linear-gradient(135deg, #00E5FF 0%, #FF3366 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+body.ai-theme .hero-description {
+  color: #CBD5E1;
+}
+
+body.ai-theme .hero-badge {
+  background: rgba(13, 20, 36, 0.85);
+  border-color: rgba(0, 229, 255, 0.3);
+  color: #00E5FF;
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
+}
+
+body.ai-theme .trust-card {
+  color: #E2E8F0;
+}
+
+body.ai-theme .trust-icon {
+  background: rgba(13, 20, 36, 0.9);
+  border-color: rgba(0, 229, 255, 0.25);
+  color: #00E5FF;
+}
+
+body.ai-theme .trust-text strong {
+  color: #F8FAFC;
+}
+
+body.ai-theme .trust-text span {
+  color: #94A3B8;
+}
+
+/* Glassmorphism Cards across the Site */
+body.ai-theme .hero-card-featured,
+body.ai-theme .product-card,
+body.ai-theme .price-board-card,
+body.ai-theme .rate-item,
+body.ai-theme .step-card,
+body.ai-theme .recipe-card,
+body.ai-theme .review-card,
+body.ai-theme .contact-form-card,
+body.ai-theme .accordion-item,
+body.ai-theme .modal-dialog,
+body.ai-theme .cart-item,
+body.ai-theme .catalog-controls {
+  background: rgba(12, 19, 34, 0.75) !important;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(0, 229, 255, 0.16) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+body.ai-theme .product-card:hover,
+body.ai-theme .step-card:hover,
+body.ai-theme .recipe-card:hover,
+body.ai-theme .rate-item:hover {
+  border-color: rgba(0, 229, 255, 0.45) !important;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 229, 255, 0.2) !important;
+}
+
+body.ai-theme .badge-tag {
+  background: rgba(0, 229, 255, 0.12);
+  color: #00E5FF;
+  border-color: rgba(0, 229, 255, 0.25);
+}
+
+body.ai-theme .section-title {
+  color: #F8FAFC;
+}
+
+body.ai-theme .section-subtitle {
+  color: #94A3B8;
+}
+
+/* Price Board in AI Theme */
+body.ai-theme .price-board-section {
+  background: transparent;
+  border-bottom: 1px solid rgba(0, 229, 255, 0.12);
+}
+
+body.ai-theme .price-board-header {
+  background: linear-gradient(135deg, #0b1220 0%, #111e38 100%);
+  border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+}
+
+body.ai-theme .rate-cost .price {
+  color: #00E5FF;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.35);
+}
+
+body.ai-theme .rate-info h4 {
+  color: #F8FAFC;
+}
+
+body.ai-theme .price-board-footer {
+  background: rgba(6, 9, 19, 0.8);
+  border-top-color: rgba(255, 255, 255, 0.08);
+  color: #CBD5E1;
+}
+
+/* Products Section in AI Theme */
+body.ai-theme .cat-tab {
+  background: rgba(12, 19, 34, 0.8);
+  border-color: rgba(0, 229, 255, 0.2);
+  color: #CBD5E1;
+}
+
+body.ai-theme .cat-tab:hover {
+  background: rgba(0, 229, 255, 0.15);
+  color: #00E5FF;
+}
+
+body.ai-theme .cat-tab.active {
+  background: linear-gradient(135deg, #00E5FF 0%, #3B82F6 100%);
+  color: #060913;
+  border-color: #00E5FF;
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.45);
+}
+
+body.ai-theme .catalog-search-wrap input {
+  background: #060913;
+  border-color: rgba(0, 229, 255, 0.2);
+  color: #FFF;
+}
+
+body.ai-theme .catalog-sort-wrap select {
+  background: #0c1424;
+  border-color: rgba(0, 229, 255, 0.2);
+  color: #E2E8F0;
+}
+
+body.ai-theme .product-title {
+  color: #F8FAFC;
+}
+
+body.ai-theme .product-price {
+  color: #00E5FF;
+  text-shadow: 0 0 12px rgba(0, 229, 255, 0.3);
+}
+
+body.ai-theme .weight-option {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #CBD5E1;
+}
+
+body.ai-theme .weight-option.active {
+  background: rgba(0, 229, 255, 0.18);
+  border-color: #00E5FF;
+  color: #00E5FF;
+  box-shadow: 0 0 8px rgba(0, 229, 255, 0.25);
+}
+
+body.ai-theme .btn-add-cart {
+  background: linear-gradient(135deg, #FF3366 0%, #E11D48 100%);
+  box-shadow: 0 0 12px rgba(255, 51, 102, 0.35);
+}
+
+body.ai-theme .btn-add-cart:hover {
+  background: linear-gradient(135deg, #FF557F 0%, #F43F5E 100%);
+  box-shadow: 0 0 18px rgba(255, 51, 102, 0.55);
+}
+
+body.ai-theme .qty-stepper {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(0, 229, 255, 0.25);
+}
+
+body.ai-theme .qty-step-btn {
+  background: rgba(13, 20, 36, 0.9);
+  color: #FFF;
+}
+
+body.ai-theme .qty-display {
+  color: #00E5FF;
+}
+
+/* Steps & Why Us in AI Theme */
+body.ai-theme .steps-section,
+body.ai-theme .recipes-section,
+body.ai-theme .contact-section {
+  background: transparent;
+  border-color: rgba(0, 229, 255, 0.12);
+}
+
+body.ai-theme .step-icon-wrap {
+  background: rgba(13, 20, 36, 0.95);
+  border-color: rgba(0, 229, 255, 0.3);
+  color: #00E5FF;
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.25);
+}
+
+body.ai-theme .step-card h3,
+body.ai-theme .recipe-content h3,
+body.ai-theme .contact-info-card h2,
+body.ai-theme .contact-form-card h3 {
+  color: #F8FAFC;
+}
+
+body.ai-theme .stat-number {
+  color: #00E5FF;
+  text-shadow: 0 0 14px rgba(0, 229, 255, 0.4);
+}
+
+body.ai-theme .feature-icon {
+  background: rgba(0, 229, 255, 0.12);
+  color: #00E5FF;
+  border-color: rgba(0, 229, 255, 0.25);
+}
+
+body.ai-theme .feature-text h4 {
+  color: #F8FAFC;
+}
+
+body.ai-theme .recipe-cut-rec {
+  background: rgba(6, 9, 19, 0.7);
+  border-color: rgba(0, 229, 255, 0.15);
+  color: #CBD5E1;
+}
+
+body.ai-theme .recipe-cut-rec strong {
+  color: #00E5FF;
+}
+
+/* Forms & Accordion in AI Theme */
+body.ai-theme .form-group input,
+body.ai-theme .form-group select,
+body.ai-theme .form-group textarea {
+  background: #060913;
+  border-color: rgba(0, 229, 255, 0.2);
+  color: #FFF;
+}
+
+body.ai-theme .form-group input:focus,
+body.ai-theme .form-group select:focus,
+body.ai-theme .form-group textarea:focus {
+  border-color: #00E5FF;
+  box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.2);
+}
+
+body.ai-theme .form-group label {
+  color: #CBD5E1;
+}
+
+body.ai-theme .accordion-header {
+  color: #F8FAFC;
+}
+
+body.ai-theme .accordion-item.active {
+  border-color: rgba(0, 229, 255, 0.4) !important;
+}
+
+/* Cart Drawer in AI Theme */
+body.ai-theme .cart-drawer {
+  background: #090E1C;
+  border-left: 1px solid rgba(0, 229, 255, 0.2);
+}
+
+body.ai-theme .cart-drawer-header {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+body.ai-theme .cart-title h3 {
+  color: #F8FAFC;
+}
+
+body.ai-theme .cart-title i {
+  color: #00E5FF;
+}
+
+body.ai-theme .cart-delivery-meter {
+  background: rgba(0, 229, 255, 0.08);
+  border-bottom-color: rgba(0, 229, 255, 0.15);
+}
+
+body.ai-theme .meter-text {
+  color: #E2E8F0;
+}
+
+body.ai-theme .cart-drawer-footer {
+  background: #070B16;
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+body.ai-theme .cart-promo-box input {
+  background: #060913;
+  border-color: rgba(0, 229, 255, 0.2);
+  color: #FFF;
+}
+
+body.ai-theme .summary-line {
+  color: #CBD5E1;
+}
+
+body.ai-theme .summary-line.total-line {
+  color: #F8FAFC;
+  border-top-color: rgba(255, 255, 255, 0.15);
+}
+
+body.ai-theme .summary-line.total-line strong {
+  color: #00E5FF;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.35);
+}
+
+body.ai-theme .cart-item-title {
+  color: #F8FAFC;
+}
+
+body.ai-theme .cart-item-price {
+  color: #00E5FF;
+}
+
+/* Mobile Drawer in AI Theme */
+body.ai-theme .mobile-drawer {
+  background: #080D1A;
+  border-right: 1px solid rgba(0, 229, 255, 0.2);
+}
+
+body.ai-theme .drawer-header {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+body.ai-theme .drawer-brand {
+  color: #00E5FF;
+}
+
+body.ai-theme .drawer-close-btn {
+  color: #CBD5E1;
+}
+
+body.ai-theme .drawer-link {
+  color: #CBD5E1;
+}
+
+body.ai-theme .drawer-link:hover {
+  background: rgba(0, 229, 255, 0.12);
+  color: #00E5FF;
+}
+
+body.ai-theme .drawer-footer {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+body.ai-theme .drawer-contact-item {
+  color: #CBD5E1;
+}
+
+/* Modals in AI Theme */
+body.ai-theme .modal-close {
+  color: #94A3B8;
+}
+
+body.ai-theme .modal-close:hover {
+  color: #00E5FF;
+}
+
+body.ai-theme .quick-view-details h2,
+body.ai-theme .checkout-modal-header h3 {
+  color: #F8FAFC;
+}
+
+body.ai-theme .quick-view-price {
+  color: #00E5FF;
+}
+
+body.ai-theme .quick-view-specs {
+  background: rgba(6, 9, 19, 0.8);
+  border: 1px solid rgba(0, 229, 255, 0.15);
+  color: #CBD5E1;
+}
+
+body.ai-theme .order-summary-mini {
+  background: rgba(6, 9, 19, 0.8);
+  border-color: rgba(0, 229, 255, 0.2);
+  color: #CBD5E1;
+}
+
+/* Footer in AI Theme */
+body.ai-theme .site-footer {
+  background: #03060C;
+  border-top: 1px solid rgba(0, 229, 255, 0.15);
+}
+
+/* Floating WhatsApp button in AI Theme */
+body.ai-theme .floating-whatsapp-btn {
+  box-shadow: 0 0 24px rgba(37, 211, 102, 0.5), 0 0 10px rgba(0, 229, 255, 0.3);
+}
+
+body.ai-theme .back-to-top-btn {
+  background: #0c1424;
+  border-color: rgba(0, 229, 255, 0.25);
+  color: #00E5FF;
+  box-shadow: 0 0 14px rgba(0, 229, 255, 0.25);
+}
+
+body.ai-theme .back-to-top-btn:hover {
+  background: #00E5FF;
+  color: #060913;
+}
+

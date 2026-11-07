@@ -16,6 +16,12 @@
     phone: '075 772 8547',
     whatsappNumber: '94757728547', // WhatsApp format with Sri Lanka country code (0757728547)
     address: '167/1, Meewala, Nittambuwa',
+    openingHour: 7,   // 07:00 (7:00 AM)
+    closingHour: 21,  // 21:00 (09:00 PM)
+    openingMinute: 0,
+    closingMinute: 0,
+    openTimeStr: '07:00 AM',
+    closeTimeStr: '09:00 PM',
     currencySymbol: 'Rs.',
     freeDeliveryThreshold: 3500,
     standardDeliveryFee: 250,
@@ -261,12 +267,15 @@
     loadSavedState();
     setupHeaderScroll();
     setupEventListeners();
+    setupAIThemeToggle();
+    initAICanvas();
     renderDailyPriceBoard();
     renderProducts();
     renderReviews();
     updateCartUI();
     setCurrentYear();
     setLivePriceDate();
+    initLiveShopHours();
   }
 
   // --------------------------------------------------------------------------
@@ -321,6 +330,338 @@
     if (el) {
       const options = { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' };
       el.textContent = new Date().toLocaleDateString('en-US', options);
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // Real-Time Live Shop Operating Hours Tracker (07:00 - 21:00)
+  // --------------------------------------------------------------------------
+  function initLiveShopHours() {
+    updateShopLiveStatus();
+    // Re-check every 10 seconds for real-time live accuracy
+    setInterval(updateShopLiveStatus, 10000);
+  }
+
+  function getShopStatus() {
+    const now = new Date();
+    const currentMins = now.getHours() * 60 + now.getMinutes();
+    const openMins = SHOP_CONFIG.openingHour * 60 + (SHOP_CONFIG.openingMinute || 0); // 07:00 -> 420 mins
+    const closeMins = SHOP_CONFIG.closingHour * 60 + (SHOP_CONFIG.closingMinute || 0); // 21:00 (09:00 PM) -> 1260 mins
+
+    const isOpen = currentMins >= openMins && currentMins < closeMins;
+    const isClosingSoon = isOpen && (closeMins - currentMins <= 30); // within 30 minutes of closing (after 8:30 PM)
+
+    // Format local time e.g. "07:46 PM"
+    let hours = now.getHours();
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    const displayHour12 = hours % 12 || 12;
+    const formatted12 = `${String(displayHour12).padStart(2, '0')}:${minutes} ${ampm}`;
+
+    return {
+      isOpen,
+      isClosingSoon,
+      formattedTime: formatted12,
+      openTimeStr: SHOP_CONFIG.openTimeStr,
+      closeTimeStr: SHOP_CONFIG.closeTimeStr
+    };
+  }
+
+  function updateShopLiveStatus() {
+    const status = getShopStatus();
+
+    // 1. Top bar indicator
+    const topStatus = document.getElementById('topShopStatus');
+    if (topStatus) {
+      if (status.isOpen) {
+        if (status.isClosingSoon) {
+          topStatus.className = 'shop-live-status-pill status-closing-soon';
+          topStatus.innerHTML = `<span class="status-live-dot"></span> <span class="status-live-text">Closing Soon (at ${status.closeTimeStr})</span>`;
+        } else {
+          topStatus.className = 'shop-live-status-pill status-open';
+          topStatus.innerHTML = `<span class="status-live-dot"></span> <span class="status-live-text"><strong>OPEN NOW</strong> &bull; Closes ${status.closeTimeStr}</span>`;
+        }
+      } else {
+        topStatus.className = 'shop-live-status-pill status-closed';
+        topStatus.innerHTML = `<span class="status-live-dot"></span> <span class="status-live-text"><strong>CLOSED NOW</strong> &bull; Opens ${status.openTimeStr}</span>`;
+      }
+    }
+
+    // 2. Header live badge
+    const headerStatus = document.getElementById('headerShopStatus');
+    if (headerStatus) {
+      if (status.isOpen) {
+        if (status.isClosingSoon) {
+          headerStatus.className = 'header-live-badge status-closing-soon';
+          headerStatus.innerHTML = `<span class="status-live-dot"></span> <span class="live-label">Closing Soon</span> <span class="live-sub">at ${status.closeTimeStr}</span>`;
+        } else {
+          headerStatus.className = 'header-live-badge status-open';
+          headerStatus.innerHTML = `<span class="status-live-dot"></span> <span class="live-label">OPEN NOW</span> <span class="live-sub">07:00–09:00 PM</span>`;
+        }
+      } else {
+        headerStatus.className = 'header-live-badge status-closed';
+        headerStatus.innerHTML = `<span class="status-live-dot"></span> <span class="live-label">CLOSED NOW</span> <span class="live-sub">Opens 07:00 AM</span>`;
+      }
+    }
+
+    // 3. Contact / Location Section live badge & live outlet clock
+    const contactStatus = document.getElementById('contactShopStatus');
+    if (contactStatus) {
+      if (status.isOpen) {
+        if (status.isClosingSoon) {
+          contactStatus.className = 'shop-hours-live-tag status-closing-soon';
+          contactStatus.innerHTML = `<span class="status-live-dot"></span> <span class="status-live-text">Closing Soon &bull; Closes ${status.closeTimeStr}</span>`;
+        } else {
+          contactStatus.className = 'shop-hours-live-tag status-open';
+          contactStatus.innerHTML = `<span class="status-live-dot"></span> <span class="status-live-text">OPEN NOW &bull; Closes ${status.closeTimeStr}</span>`;
+        }
+      } else {
+        contactStatus.className = 'shop-hours-live-tag status-closed';
+        contactStatus.innerHTML = `<span class="status-live-dot"></span> <span class="status-live-text">CLOSED NOW &bull; Opens Tomorrow at ${status.openTimeStr}</span>`;
+      }
+    }
+
+    const currentLocalClock = document.getElementById('currentLocalClock');
+    if (currentLocalClock) {
+      currentLocalClock.textContent = status.formattedTime;
+    }
+
+    // 4. Mobile Drawer Status
+    const drawerStatus = document.getElementById('drawerShopStatus');
+    if (drawerStatus) {
+      if (status.isOpen) {
+        drawerStatus.className = 'drawer-status-box status-open';
+        drawerStatus.innerHTML = `
+          <div class="drawer-status-pill"><span class="status-live-dot"></span> Shop is OPEN NOW</div>
+          <small>Working hours: 07:00 AM – 09:00 PM</small>
+        `;
+      } else {
+        drawerStatus.className = 'drawer-status-box status-closed';
+        drawerStatus.innerHTML = `
+          <div class="drawer-status-pill"><span class="status-live-dot"></span> Shop is CLOSED NOW</div>
+          <small>Dispatches start tomorrow at 07:00 AM</small>
+        `;
+      }
+    }
+
+    // 5. Checkout Modal Note
+    const checkoutNote = document.getElementById('checkoutStoreStatusNote');
+    if (checkoutNote) {
+      if (!status.isOpen) {
+        checkoutNote.style.display = 'flex';
+        checkoutNote.className = 'store-status-checkout-note status-closed-note';
+        checkoutNote.innerHTML = `
+          <i class="fa-solid fa-moon note-icon"></i>
+          <div>
+            <strong>We are currently closed for the night (07:00 AM – 09:00 PM).</strong>
+            <p>You can still place your order now! Our farm butchery will prepare and dispatch it fresh at <strong>07:00 AM</strong> tomorrow morning.</p>
+          </div>
+        `;
+      } else if (status.isClosingSoon) {
+        checkoutNote.style.display = 'flex';
+        checkoutNote.className = 'store-status-checkout-note status-closing-note';
+        checkoutNote.innerHTML = `
+          <i class="fa-solid fa-clock-rotate-left note-icon"></i>
+          <div>
+            <strong>Shop closes soon at 09:00 PM!</strong>
+            <p>Orders placed now are processed for immediate express evening delivery.</p>
+          </div>
+        `;
+      } else {
+        checkoutNote.style.display = 'flex';
+        checkoutNote.className = 'store-status-checkout-note status-open-note';
+        checkoutNote.innerHTML = `
+          <i class="fa-solid fa-circle-check note-icon"></i>
+          <div>
+            <strong>Shop is LIVE & OPEN! (07:00 AM – 09:00 PM)</strong>
+            <p>Fresh batch available right now. Estimated express delivery in 45-60 mins.</p>
+          </div>
+        `;
+      }
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // AI Futuristic Neural Particle Background Canvas Engine
+  // --------------------------------------------------------------------------
+  let aiCanvasAnimId = null;
+
+  function initAICanvas() {
+    const canvas = document.getElementById('aiNeuralCanvas');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    const mouse = { x: null, y: null, radius: 150 };
+
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
+
+    window.addEventListener('mouseleave', () => {
+      mouse.x = null;
+      mouse.y = null;
+    });
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      createNodes();
+    });
+
+    const colors = ['#00E5FF', '#A855F7', '#FF3366', '#38BDF8'];
+    let nodes = [];
+
+    function createNodes() {
+      nodes = [];
+      const count = Math.min(85, Math.max(38, Math.floor((width * height) / 22000)));
+
+      for (let i = 0; i < count; i++) {
+        nodes.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.7,
+          vy: (Math.random() - 0.5) * 0.7,
+          radius: Math.random() * 2 + 1.2,
+          color: colors[Math.floor(Math.random() * colors.length)]
+        });
+      }
+    }
+
+    createNodes();
+
+    function animate() {
+      // If AI theme is deactivated, loop with low overhead
+      if (!document.body.classList.contains('ai-theme')) {
+        aiCanvasAnimId = requestAnimationFrame(animate);
+        return;
+      }
+
+      ctx.clearRect(0, 0, width, height);
+
+      // Connect nearby nodes
+      const maxDistance = 120;
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x;
+          const dy = nodes[i].y - nodes[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < maxDistance) {
+            const lineAlpha = (1 - dist / maxDistance) * 0.28;
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(0, 229, 255, ${lineAlpha})`;
+            ctx.lineWidth = 0.9;
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Connect nodes to mouse position
+      if (mouse.x !== null && mouse.y !== null) {
+        for (let i = 0; i < nodes.length; i++) {
+          const dx = nodes[i].x - mouse.x;
+          const dy = nodes[i].y - mouse.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < mouse.radius) {
+            const lineAlpha = (1 - dist / mouse.radius) * 0.45;
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(168, 85, 247, ${lineAlpha})`;
+            ctx.lineWidth = 1.1;
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.stroke();
+
+            // Gentle reactive pull towards cursor
+            nodes[i].x -= dx * 0.015;
+            nodes[i].y -= dy * 0.015;
+          }
+        }
+      }
+
+      // Update and draw each node
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+        n.x += n.vx;
+        n.y += n.vy;
+
+        if (n.x < 0 || n.x > width) n.vx *= -1;
+        if (n.y < 0 || n.y > height) n.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
+        ctx.fillStyle = n.color;
+        ctx.shadowColor = n.color;
+        ctx.shadowBlur = 8;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+
+      aiCanvasAnimId = requestAnimationFrame(animate);
+    }
+
+    animate();
+  }
+
+  // --------------------------------------------------------------------------
+  // AI Theme Switcher Engine
+  // --------------------------------------------------------------------------
+  function setupAIThemeToggle() {
+    const toggleBtn = document.getElementById('aiThemeToggleBtn');
+    const drawerToggleBtn = document.getElementById('drawerAiToggleBtn');
+
+    // Default to true (AI theme active on first load)
+    let isAiTheme = localStorage.getItem('ranjani_ai_theme') !== 'false';
+
+    function applyTheme(active, notify = false) {
+      if (active) {
+        document.body.classList.add('ai-theme');
+        if (toggleBtn) {
+          toggleBtn.classList.add('active');
+          toggleBtn.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles"></i> <span class="ai-toggle-text">AI Mode ON</span>';
+        }
+        if (drawerToggleBtn) {
+          drawerToggleBtn.classList.add('active');
+        }
+        localStorage.setItem('ranjani_ai_theme', 'true');
+        if (notify) showToast('AI Futuristic Cyber Theme activated! ⚡', 'success');
+      } else {
+        document.body.classList.remove('ai-theme');
+        if (toggleBtn) {
+          toggleBtn.classList.remove('active');
+          toggleBtn.innerHTML = '<i class="fa-solid fa-sparkles"></i> <span class="ai-toggle-text">Classic Theme</span>';
+        }
+        if (drawerToggleBtn) {
+          drawerToggleBtn.classList.remove('active');
+        }
+        localStorage.setItem('ranjani_ai_theme', 'false');
+        if (notify) showToast('Switched to Classic Daylight Farm Theme', 'info');
+      }
+    }
+
+    // Apply initial state
+    applyTheme(isAiTheme, false);
+
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', () => {
+        isAiTheme = !document.body.classList.contains('ai-theme');
+        applyTheme(isAiTheme, true);
+      });
+    }
+
+    if (drawerToggleBtn) {
+      drawerToggleBtn.addEventListener('click', () => {
+        isAiTheme = !document.body.classList.contains('ai-theme');
+        applyTheme(isAiTheme, true);
+      });
     }
   }
 
@@ -1002,6 +1343,7 @@
     }
 
     if (modal) {
+      updateShopLiveStatus();
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
@@ -1265,6 +1607,7 @@
     handleReviewSubmit,
     handleContactSubmit,
     handleNewsletter,
+    setupAIThemeToggle,
     showToast
   };
 
