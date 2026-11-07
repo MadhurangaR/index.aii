@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ranjani Farm Shop | 100% Fresh Farm Chicken & Poultry</title>
+  <meta name="description" content="Ranjani Farm Shop delivers premium, farm-fresh, antibiotic-free chicken and poultry cuts daily. Fresh curry cut, boneless breast, drumsticks, country chicken, and farm eggs. Order online or via WhatsApp!">
+  <meta name="keywords" content="Ranjani Farm Shop, fresh chicken, poultry shop, curry cut chicken, boneless breast, free-range chicken, country chicken, naatu kozhi, fresh eggs, raw chicken delivery">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22 100%22><text y=%22.9em%22 font-size=%2290%22>🍗</text></svg>">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <aside class="top-bar" aria-label="Store Announcement">
+    <div class="container top-bar-content">
+      <div class="top-bar-left">
+        <span><i class="fa-solid fa-clock"></i> Today's Fresh Slaughter Batch: <strong>Arrived at 6:00 AM</strong></span>
+        <span class="divider">|</span>
+        <span><i class="fa-solid fa-shield-halved"></i> 100% Antibiotic-Free & Chemical-Free</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="tel:0757728547" class="top-contact"><i class="fa-solid fa-phone"></i> 075 772 8547</a>
+        <a href="#location" class="top-location"><i class="fa-solid fa-location-dot"></i> 167/1, Meewala, Nittambuwa</a>
+        <span class="delivery-pill"><i class="fa-solid fa-bolt"></i> Fast Home Delivery</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Navigation Header -->
+  <header class="site-header" id="header">
+    <div class="container header-container">
+      <a href="#" class="brand-logo" aria-label="Ranjani Farm Shop Home">
+        <div class="logo-icon-wrapper">
+          <i class="fa-solid fa-feather-pointed logo-feather"></i>
+          <span class="logo-emoji">🍗</span>
+        </div>
+        <div class="logo-text">
+          <span class="brand-title">RANJANI</span>
+          <span class="brand-subtitle">FARM SHOP</span>
+          <span class="brand-tagline">100% Pure Farm Fresh</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="main-nav" id="mainNav" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#products" class="nav-link">Our Cuts & Products</a></li>
+          <li><a href="#price-board" class="nav-link">Daily Rates</a></li>
+          <li><a href="#why-us" class="nav-link">Farm Quality</a></li>
+          <li><a href="#recipes" class="nav-link">Recipes</a></li>
+          <li><a href="#reviews" class="nav-link">Reviews</a></li>
+          <li><a href="#location" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Action Buttons -->
+      <div class="header-actions">
+        <button class="search-toggle-btn" id="searchToggleBtn" title="Search Products" aria-label="Toggle Search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        
+        <button class="cart-btn" id="cartOpenBtn" aria-label="Shopping Cart">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-label">Cart</span>
+          <span class="cart-count" id="cartCountBadge">0</span>
+        </button>
+
+        <a href="https://wa.me/94757728547?text=Hello%20Ranjani%20Farm%20Shop%2C%20I%20would%20like%20to%20order%20fresh%20chicken" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp-header">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span class="btn-text">Quick Order</span>
+        </a>
+
+        <button class="hamburger-menu" id="hamburgerBtn" aria-label="Open Mobile Menu" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Quick Search Bar Dropdown -->
+    <div class="header-search-bar" id="headerSearchBar">
+      <div class="container search-bar-inner">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="searchInput" placeholder="Search chicken cuts, boneless, drumsticks, country chicken, eggs..." autocomplete="off">
+        <button class="search-clear-btn" id="searchClearBtn" title="Clear search"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <div class="drawer-brand">
+        <span class="emoji">🍗</span>
+        <span>Ranjani Farm Shop</span>
+      </div>
+      <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close menu">&times;</button>
+    </div>
+    <ul class="drawer-links">
+      <li><a href="#home" class="drawer-link"><i class="fa-solid fa-house"></i> Home</a></li>
+      <li><a href="#products" class="drawer-link"><i class="fa-solid fa-drumstick-bite"></i> Fresh Cuts & Shop</a></li>
+      <li><a href="#price-board" class="drawer-link"><i class="fa-solid fa-tags"></i> Today's Price Board</a></li>
+      <li><a href="#why-us" class="drawer-link"><i class="fa-solid fa-certificate"></i> Why Ranjani Farms</a></li>
+      <li><a href="#recipes" class="drawer-link"><i class="fa-solid fa-utensils"></i> Chef Recipes</a></li>
+      <li><a href="#reviews" class="drawer-link"><i class="fa-solid fa-star"></i> Customer Reviews</a></li>
+      <li><a href="#location" class="drawer-link"><i class="fa-solid fa-map-location-dot"></i> Visit Our Shop</a></li>
+    </ul>
+    <div class="drawer-footer">
+      <div class="drawer-contact-item">
+        <i class="fa-solid fa-phone"></i>
+        <div>
+          <span>Call Orders</span>
+          <strong>075 772 8547</strong>
+        </div>
+      </div>
+      <a href="https://wa.me/94757728547?text=Hi%20Ranjani%20Farm%20Shop%2C%20I%20want%20to%20order%20chicken" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp-full">
+        <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+      </a>
+    </div>
+  </div>
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="home">
+    <div class="hero-bg-overlay"></div>
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="pulse-dot"></span>
+          <span>Naturally Raised &bull; 100% Farm Fresh Everyday</span>
+        </div>
+        <h1 class="hero-title">
+          Tender, Juicy & Fresh Chicken <br>
+          <span class="highlight-text">Straight From Our Farm</span> To Your Pan
+        </h1>
+        <p class="hero-description">
+          Welcome to <strong>Ranjani Farm Shop</strong>. We deliver healthy, grain-fed, antibiotic-free chicken cut to your custom culinary preference. Hygienically cleaned, vacuum-chilled, and guaranteed fresh within hours of harvest.
+        </p>
+        
+        <div class="hero-actions">
+          <a href="#products" class="btn btn-primary btn-lg">
+            <i class="fa-solid fa-bag-shopping"></i> Order Fresh Cuts
+          </a>
+          <a href="#price-board" class="btn btn-outline btn-lg">
+            <i class="fa-solid fa-receipt"></i> Check Daily Rates
+          </a>
+          <a href="https://wa.me/94757728547?text=Hello%20Ranjani%20Farm%20Shop%2C%20please%20send%20me%20today's%20fresh%20stock%20list" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-lg">
+            <i class="fa-brands fa-whatsapp"></i> Order on WhatsApp
+          </a>
+        </div>
+
+        <!-- Trust Badges List -->
+        <div class="hero-trust-grid">
+          <div class="trust-card">
+            <div class="trust-icon"><i class="fa-solid fa-wheat-awn"></i></div>
+            <div class="trust-text">
+              <strong>100% Vegetarian Feed</strong>
+              <span>No synthetic hormones or promoters</span>
+            </div>
+          </div>
+          <div class="trust-card">
+            <div class="trust-icon"><i class="fa-solid fa-snowflake"></i></div>
+            <div class="trust-text">
+              <strong>0-4&deg;C Cold Chain</strong>
+              <span>Always fresh, never frozen stale</span>
+            </div>
+          </div>
+          <div class="trust-card">
+            <div class="trust-icon"><i class="fa-solid fa-knife-kitchen"></i></div>
+            <div class="trust-text">
+              <strong>Custom Cuts On Demand</strong>
+              <span>Curry, Biryani, Keema or Fillets</span>
+            </div>
+          </div>
+          <div class="trust-card">
+            <div class="trust-icon"><i class="fa-solid fa-truck-fast"></i></div>
+            <div class="trust-text">
+              <strong>60 Min Express Delivery</strong>
+              <span>Packaged in food-grade leakproof trays</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual Card -->
+      <div class="hero-visual">
+        <div class="hero-card-featured">
+          <div class="featured-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1587593810167-a84920ea0781?auto=format&fit=crop&w=900&q=80" alt="Fresh Farm Chicken Cuts Ranjani Farm" class="featured-hero-img" id="heroMainImg">
+            <span class="live-tag"><i class="fa-solid fa-circle"></i> In Stock Now</span>
+            <div class="discount-pill">Daily Special: 10% OFF 1st Order</div>
+          </div>
+          <div class="hero-featured-details">
+            <div class="featured-header">
+              <div>
+                <h3>Ranjani Signature Curry Cut</h3>
+                <p>Skinless &bull; Tender &bull; 100% Wastage Free Cleaned</p>
+              </div>
+              <div class="featured-price">
+                <span class="price-val">Rs. 1,250</span>
+                <span class="price-unit">/ 1 kg</span>
+              </div>
+            </div>
+            <div class="featured-action-row">
+              <button class="btn btn-primary btn-block quick-add-hero" onclick="app.quickAddFeaturedProduct()">
+                <i class="fa-solid fa-plus"></i> Add To Cart &bull; Rs. 1,250
+              </button>
+            </div>
+          </div>
+          <div class="farm-rating-float">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <span><strong>4.9 / 5</strong> (1,450+ Happy Home Cooks)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Price Board / Today's Rates -->
+  <section class="price-board-section" id="price-board">
+    <div class="container">
+      <div class="section-badge-center">
+        <span class="badge-tag"><i class="fa-solid fa-scale-balanced"></i> Fair Farm Pricing</span>
+      </div>
+      <h2 class="section-title text-center">Today's Live Fresh Price Board</h2>
+      <p class="section-subtitle text-center">Direct from Ranjani Farm poultry sheds. No middlemen, no inflated superstore markups.</p>
+      
+      <div class="price-board-card">
+        <div class="price-board-header">
+          <div class="date-stamp">
+            <i class="fa-regular fa-calendar-check"></i>
+            <span>Updated: <strong id="livePriceDate">Today</strong></span>
+          </div>
+          <div class="market-status">
+            <span class="status-indicator"></span> Market Fresh &bull; Cut To Order
+          </div>
+        </div>
+        
+        <div class="price-grid" id="dailyRatesGrid">
+          <!-- Populated dynamically by app.js -->
+        </div>
+
+        <div class="price-board-footer">
+          <span><i class="fa-solid fa-circle-info"></i> All weights measured after cleaning with precision digital scales. Zero excess skin or fat weight cheating.</span>
+          <a href="#products" class="btn btn-sm btn-outline">Shop All Cuts &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Catalog Section -->
+  <section class="products-section" id="products">
+    <div class="container">
+      <div class="section-header-row">
+        <div>
+          <span class="badge-tag"><i class="fa-solid fa-drumstick-bite"></i> Fresh Raw Cuts & Specialty</span>
+          <h2 class="section-title">Explore Our Farm Products</h2>
+          <p class="section-subtitle">Triple washed in purified water, trimmed of excess fat, ready to cook.</p>
+        </div>
+        
+        <!-- Filter Tabs -->
+        <div class="category-tabs" id="categoryTabs" role="tablist">
+          <button class="cat-tab active" data-category="all" role="tab" aria-selected="true">All Cuts</button>
+          <button class="cat-tab" data-category="curry" role="tab" aria-selected="false">Curry & Biryani</button>
+          <button class="cat-tab" data-category="boneless" role="tab" aria-selected="false">Boneless & Breast</button>
+          <button class="cat-tab" data-category="legs-wings" role="tab" aria-selected="false">Legs & Wings</button>
+          <button class="cat-tab" data-category="country" role="tab" aria-selected="false">Country Chicken</button>
+          <button class="cat-tab" data-category="eggs" role="tab" aria-selected="false">Farm Eggs</button>
+          <button class="cat-tab" data-category="marinated" role="tab" aria-selected="false">Marinated Ready-To-Fry</button>
+        </div>
+      </div>
+
+      <!-- Search & Sorting Filter Bar -->
+      <div class="catalog-controls">
+        <div class="catalog-search-wrap">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="catalogSearchInput" placeholder="Filter by cut name (e.g. skinless, wings, keema)...">
+        </div>
+        <div class="catalog-sort-wrap">
+          <label for="sortSelect"><i class="fa-solid fa-arrow-down-short-wide"></i> Sort By:</label>
+          <select id="sortSelect">
+            <option value="popular">Most Popular</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Highest Customer Rating</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="products-grid" id="productsGrid">
+        <!-- Products injected via app.js -->
+      </div>
+
+      <!-- Empty State if no product found -->
+      <div class="empty-products" id="emptyProducts" style="display: none;">
+        <i class="fa-solid fa-egg empty-icon"></i>
+        <h3>No cuts found matching your search</h3>
+        <p>Try searching for "boneless", "curry", "wings" or browse all categories.</p>
+        <button class="btn btn-outline" onclick="app.resetFilters()">View All Products</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Order / 3-Step Process -->
+  <section class="steps-section">
+    <div class="container">
+      <div class="section-badge-center">
+        <span class="badge-tag"><i class="fa-solid fa-arrows-spin"></i> Simple & Fast</span>
+      </div>
+      <h2 class="section-title text-center">How Ranjani Farm Delivers Freshness</h2>
+      <p class="section-subtitle text-center">From free-range poultry houses to your doorstep in 3 effortless steps</p>
+      
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-icon-wrap"><i class="fa-solid fa-hand-pointer"></i></div>
+          <h3>Select Cuts & Weight</h3>
+          <p>Choose your preferred cut style (skinless, skin-on, small curry cut, large biryani cuts or boneless fillets).</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-icon-wrap"><i class="fa-solid fa-knife-kitchen"></i></div>
+          <h3>Custom Cut & Chilled</h3>
+          <p>Our master butchers cut your order fresh, cleanse with pure RO water, and vacuum pack at 2°C temperature.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-icon-wrap"><i class="fa-solid fa-truck-ramp-box"></i></div>
+          <h3>Speedy Doorstep Delivery</h3>
+          <p>Delivered straight to your kitchen in insulated chilled bags, or picked up at our shop counter in minutes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Ranjani Farm Section -->
+  <section class="why-us-section" id="why-us">
+    <div class="container why-grid">
+      <div class="why-content">
+        <span class="badge-tag"><i class="fa-solid fa-award"></i> The Ranjani Difference</span>
+        <h2 class="section-title">Why Thousands of Families Trust Ranjani Farm Shop</h2>
+        <p class="why-intro">
+          We founded Ranjani Farm Shop with one principle: <strong>to serve poultry clean enough for our own children to eat with joy and health</strong>. Unlike ordinary marketplace stalls where meat sits at ambient room temperature, we follow stringent international food hygiene rules.
+        </p>
+
+        <div class="features-list">
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fa-solid fa-virus-slash"></i></div>
+            <div class="feature-text">
+              <h4>Zero Chemical & Preservative Wash</h4>
+              <p>We strictly refuse chlorine washes or artificial coloring. Our chicken retains its natural sweet flavor and nutrition.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div class="feature-text">
+              <h4>Pasture Raised & Healthy Grain Diets</h4>
+              <p>Birds roam in well-ventilated, cruelty-free sheds and eat nutrient-dense corn, soy, and vitamin greens.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fa-solid fa-kitchen-set"></i></div>
+            <div class="feature-text">
+              <h4>Sanitized Stainless Steel Processing</h4>
+              <p>Grade 304 food stainless counters, sterilized knives, and gloved butchers for absolute cleanliness.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon"><i class="fa-solid fa-thumbs-up"></i></div>
+            <div class="feature-text">
+              <h4>Exact Grams Guarantee</h4>
+              <p>You pay for pure meat, not melting ice or heavy plastic weights. Complete transparent billing every time.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="farm-stats-row">
+          <div class="stat-box">
+            <span class="stat-number">15+</span>
+            <span class="stat-label">Years of Farming</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number">25,000+</span>
+            <span class="stat-label">Orders Fulfilled</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Hygienic Guarantee</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="why-visual">
+        <div class="why-image-card">
+          <img src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=900&q=80" alt="Free-range country chicken at Ranjani Farm" class="why-img">
+          <div class="why-badge-overlay">
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <strong>Daily Veterinary Checked</strong>
+              <span>Certified healthy poultry flock</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recipe Inspiration / Cooking Suggestions -->
+  <section class="recipes-section" id="recipes">
+    <div class="container">
+      <div class="section-badge-center">
+        <span class="badge-tag"><i class="fa-solid fa-fire-burner"></i> Kitchen Inspiration</span>
+      </div>
+      <h2 class="section-title text-center">Cook Like a Master Chef</h2>
+      <p class="section-subtitle text-center">Every chicken cut has its culinary superpower. Match the right cut to the right recipe!</p>
+      
+      <div class="recipes-grid">
+        <div class="recipe-card">
+          <div class="recipe-img-wrap">
+            <img src="https://images.unsplash.com/photo-1588168333986-5078d3ae3976?auto=format&fit=crop&w=600&q=80" alt="Crispy Fried Drumsticks">
+            <span class="recipe-tag">Drumsticks</span>
+          </div>
+          <div class="recipe-content">
+            <div class="recipe-meta">
+              <span><i class="fa-regular fa-clock"></i> 35 Mins</span>
+              <span><i class="fa-solid fa-pepper-hot"></i> Medium Spicy</span>
+            </div>
+            <h3>Crispy Garlic Herb Roast Legs</h3>
+            <p>Juicy tender meat with rich marrow flavor. Perfectly paired with our Ranjani Fresh Drumstick cuts.</p>
+            <div class="recipe-cut-rec">
+              <strong>Best Cut:</strong> Fresh Whole Chicken Drumsticks
+            </div>
+            <button class="btn btn-sm btn-outline btn-block" onclick="app.filterByCut('legs-wings')">Order Drumsticks &rarr;</button>
+          </div>
+        </div>
+
+        <div class="recipe-card">
+          <div class="recipe-img-wrap">
+            <img src="https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&fit=crop&w=600&q=80" alt="Tender Butter Chicken Fillet">
+            <span class="recipe-tag">Boneless</span>
+          </div>
+          <div class="recipe-content">
+            <div class="recipe-meta">
+              <span><i class="fa-regular fa-clock"></i> 25 Mins</span>
+              <span><i class="fa-solid fa-utensils"></i> High Protein</span>
+            </div>
+            <h3>Butter Chicken & Grilled Tikka</h3>
+            <p>Super lean, melt-in-the-mouth chicken breast strips that soak in rich spices and cream effortlessly.</p>
+            <div class="recipe-cut-rec">
+              <strong>Best Cut:</strong> Farm Fresh Boneless Breast Fillet
+            </div>
+            <button class="btn btn-sm btn-outline btn-block" onclick="app.filterByCut('boneless')">Order Boneless Fillets &rarr;</button>
+          </div>
+        </div>
+
+        <div class="recipe-card">
+          <div class="recipe-img-wrap">
+            <img src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=600&q=80" alt="Traditional Village Chicken Curry">
+            <span class="recipe-tag">Curry Cut</span>
+          </div>
+          <div class="recipe-content">
+            <div class="recipe-meta">
+              <span><i class="fa-regular fa-clock"></i> 45 Mins</span>
+              <span><i class="fa-solid fa-bowl-food"></i> Village Style</span>
+            </div>
+            <h3>Authentic Farmhouse Spiced Curry</h3>
+            <p>Balanced mix of bone-in and bone-less cuts giving deep, thick gravy and unbeatable aroma.</p>
+            <div class="recipe-cut-rec">
+              <strong>Best Cut:</strong> Ranjani Signature Curry Cut (Medium)
+            </div>
+            <button class="btn btn-sm btn-outline btn-block" onclick="app.filterByCut('curry')">Order Curry Cut &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Customer Testimonials Section -->
+  <section class="reviews-section" id="reviews">
+    <div class="container">
+      <div class="section-badge-center">
+        <span class="badge-tag"><i class="fa-solid fa-star"></i> Real Feedback</span>
+      </div>
+      <h2 class="section-title text-center">Loved by Home Chefs & Families</h2>
+      <p class="section-subtitle text-center">Here is what our neighborhood customers say about Ranjani Farm Shop</p>
+
+      <div class="reviews-grid" id="reviewsGrid">
+        <!-- Rendered by app.js -->
+      </div>
+
+      <!-- Add Review Form Button -->
+      <div class="text-center review-cta-wrap">
+        <button class="btn btn-outline" id="openReviewModalBtn">
+          <i class="fa-solid fa-pen-to-square"></i> Leave a Review for Ranjani Farm
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visit Shop & Contact Section -->
+  <section class="contact-section" id="location">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info-card">
+          <span class="badge-tag"><i class="fa-solid fa-shop"></i> Farm Outlet & Counters</span>
+          <h2>Visit Ranjani Farm Shop</h2>
+          <p>Drop by our outlet for live cut-to-order service or pick up your reserved online packages in 2 minutes.</p>
+
+          <div class="contact-detail-list">
+            <div class="contact-detail-item">
+              <div class="detail-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div>
+                <strong>Shop Address</strong>
+                <p>167/1, Meewala, Nittambuwa</p>
+              </div>
+            </div>
+
+            <div class="contact-detail-item">
+              <div class="detail-icon"><i class="fa-solid fa-clock"></i></div>
+              <div>
+                <strong>Opening Hours (7 Days a Week)</strong>
+                <p>Monday – Saturday: 6:00 AM – 8:30 PM<br>Sunday: 6:00 AM – 3:00 PM (Special Sunday Cuts)</p>
+              </div>
+            </div>
+
+            <div class="contact-detail-item">
+              <div class="detail-icon"><i class="fa-solid fa-phone"></i></div>
+              <div>
+                <strong>Direct Phone / Delivery Hotline</strong>
+                <p><a href="tel:0757728547">075 772 8547</a> / <a href="tel:+94757728547">+94 75 772 8547</a></p>
+              </div>
+            </div>
+
+            <div class="contact-detail-item">
+              <div class="detail-icon"><i class="fa-brands fa-whatsapp"></i></div>
+              <div>
+                <strong>WhatsApp Instant Help & Orders</strong>
+                <p><a href="https://wa.me/94757728547?text=Hi%20Ranjani%20Farm%20Shop" target="_blank" rel="noopener">075 772 8547 (Click to Chat)</a></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="social-links-row">
+            <a href="#" class="social-link" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-link" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-link" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#" class="social-link" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Contact & Inquiry / Bulk Order Form -->
+        <div class="contact-form-card">
+          <h3>Send Us an Inquiry / Bulk Hotel Order</h3>
+          <p>Restaurants, caterers, party hosts, or general questions — drop us a line below.</p>
+          
+          <form id="contactForm" onsubmit="app.handleContactSubmit(event)">
+            <div class="form-group">
+              <label for="contactName">Your Full Name *</label>
+              <input type="text" id="contactName" required placeholder="e.g. Priyantha Silva">
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="contactPhone">Phone / WhatsApp *</label>
+                <input type="tel" id="contactPhone" required placeholder="075 772 8547">
+              </div>
+              <div class="form-group">
+                <label for="contactType">Inquiry Type</label>
+                <select id="contactType">
+                  <option value="retail">Daily Home Delivery</option>
+                  <option value="bulk">Bulk / Event / Hotel Order</option>
+                  <option value="feedback">Feedback / Suggestion</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contactMessage">Your Message / Requirement *</label>
+              <textarea id="contactMessage" rows="4" required placeholder="Tell us how many kg, cut preference or questions..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+              <i class="fa-solid fa-paper-plane"></i> Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Frequently Asked Questions -->
+  <section class="faq-section">
+    <div class="container faq-container">
+      <div class="section-badge-center">
+        <span class="badge-tag"><i class="fa-solid fa-circle-question"></i> Got Questions?</span>
+      </div>
+      <h2 class="section-title text-center">Frequently Asked Questions</h2>
+      
+      <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <span>Is your chicken fresh or frozen?</span>
+            <i class="fa-solid fa-chevron-down acc-icon"></i>
+          </button>
+          <div class="accordion-content">
+            <p>Our chicken is <strong>100% fresh and never frozen</strong>. We harvest healthy birds every morning from Ranjani Farms. The meat is chilled at optimal 0°C to 4°C to seal in freshness, texture, and natural juices.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <span>Can I customize the cut sizes (e.g. Biryani size or curry cut)?</span>
+            <i class="fa-solid fa-chevron-down acc-icon"></i>
+          </button>
+          <div class="accordion-content">
+            <p>Yes! During checkout or when ordering via WhatsApp, you can specify your cut preference: Skin-on, Skinless, Small Curry Cut (16-18 pcs), Large Biryani Cut (8-10 pcs), Keema (Minced), or Boneless Cubes.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <span>What are your home delivery zones and timings?</span>
+            <i class="fa-solid fa-chevron-down acc-icon"></i>
+          </button>
+          <div class="accordion-content">
+            <p>We deliver within a 15 km radius of our shop outlet. Express delivery usually reaches you within 45 to 60 minutes in insulated chilled packs. Free delivery is provided on orders over Rs. 3,500!</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header" aria-expanded="false">
+            <span>Is your chicken 100% Halal and hygienically slaughtered?</span>
+            <i class="fa-solid fa-chevron-down acc-icon"></i>
+          </button>
+          <div class="accordion-content">
+            <p>Yes, all slaughtering and dressing operations strictly adhere to certified Halal standards, veterinary oversight, and high food sanitation standards.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-col footer-brand-col">
+        <div class="footer-logo">
+          <span class="emoji">🍗</span>
+          <span class="title">Ranjani Farm Shop</span>
+        </div>
+        <p class="footer-bio">
+          Pioneering farm-fresh poultry since 2011. Naturally nourished chickens, hygienic butchery, and honest weights delivered with care to your kitchen.
+        </p>
+        <div class="footer-payment-icons">
+          <span class="pay-badge"><i class="fa-solid fa-money-bill-wave"></i> Cash on Delivery</span>
+          <span class="pay-badge"><i class="fa-solid fa-credit-card"></i> Card & UPI / QR</span>
+          <span class="pay-badge"><i class="fa-brands fa-whatsapp"></i> WhatsApp Pay</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Popular Cuts</h4>
+        <ul class="footer-links">
+          <li><a href="#products" onclick="app.filterByCut('curry')">Signature Curry Cut</a></li>
+          <li><a href="#products" onclick="app.filterByCut('boneless')">Boneless Breast Fillets</a></li>
+          <li><a href="#products" onclick="app.filterByCut('legs-wings')">Crispy Wings & Drumsticks</a></li>
+          <li><a href="#products" onclick="app.filterByCut('country')">Free-Range Country Chicken</a></li>
+          <li><a href="#products" onclick="app.filterByCut('eggs')">Pasture Brown Farm Eggs</a></li>
+          <li><a href="#products" onclick="app.filterByCut('marinated')">Ready-to-Fry Marinated Cuts</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#price-board">Today's Price Board</a></li>
+          <li><a href="#why-us">Farm Quality Standards</a></li>
+          <li><a href="#recipes">Chef Recipe Tips</a></li>
+          <li><a href="#reviews">Customer Reviews</a></li>
+          <li><a href="#location">Find Our Shop</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Stay In Touch</h4>
+        <p class="footer-newsletter-text">Subscribe for special weekend deals & fresh stock alerts.</p>
+        <form class="newsletter-form" onsubmit="app.handleNewsletter(event)">
+          <input type="email" id="newsletterEmail" placeholder="Enter your email or phone" required>
+          <button type="submit" class="btn btn-primary" aria-label="Subscribe"><i class="fa-solid fa-arrow-right"></i></button>
+        </form>
+        <div class="emergency-order">
+          <span>Need chicken urgently?</span>
+          <a href="tel:0757728547" class="footer-call"><i class="fa-solid fa-phone-volume"></i> <strong>075 772 8547</strong></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; <span id="currentYear"></span> <strong>Ranjani Farm Shop</strong>. All rights reserved. Crafted with fresh poultry love.</p>
+        <div class="bottom-badges">
+          <span><i class="fa-solid fa-leaf"></i> Antibiotic Free</span>
+          <span><i class="fa-solid fa-shield-halved"></i> 100% Quality Guaranteed</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Quick WhatsApp Button -->
+  <a href="https://wa.me/94757728547?text=Hello%20Ranjani%20Farm%20Shop%2C%20I%20would%20like%20to%20order%20chicken%20today" target="_blank" rel="noopener noreferrer" class="floating-whatsapp-btn" id="floatingWhatsapp" title="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span class="whatsapp-tooltip">Order on WhatsApp</span>
+  </a>
+
+  <!-- Floating Back to Top Button -->
+  <button class="back-to-top-btn" id="backToTopBtn" title="Back to top" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Slide-Over Shopping Cart Drawer -->
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping Cart Drawer">
+    <div class="cart-drawer-header">
+      <div class="cart-title">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <h3>Your Fresh Basket</h3>
+        <span class="cart-item-count" id="drawerCartCount">(0 items)</span>
+      </div>
+      <button class="cart-drawer-close" id="cartCloseBtn" aria-label="Close cart">&times;</button>
+    </div>
+
+    <!-- Free Delivery Progress Bar -->
+    <div class="cart-delivery-meter" id="cartDeliveryMeter">
+      <div class="meter-text" id="meterText">
+        Add <strong>Rs. 3,500</strong> more for <strong>FREE Delivery</strong>!
+      </div>
+      <div class="meter-bar">
+        <div class="meter-fill" id="meterFill" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <!-- Cart Items List -->
+    <div class="cart-items-container" id="cartItemsList">
+      <!-- Populated by JavaScript -->
+    </div>
+
+    <!-- Empty Cart State -->
+    <div class="empty-cart-state" id="emptyCartState">
+      <i class="fa-solid fa-basket-shopping empty-cart-icon"></i>
+      <h4>Your basket is hungry!</h4>
+      <p>Browse our farm-fresh cuts and add delicious chicken to your basket.</p>
+      <button class="btn btn-primary" onclick="app.closeCart(); window.location.href='#products';">
+        <i class="fa-solid fa-drumstick-bite"></i> Browse Fresh Cuts
+      </button>
+    </div>
+
+    <!-- Cart Footer with Totals and Order Actions -->
+    <div class="cart-drawer-footer" id="cartFooter">
+      <div class="cart-promo-box">
+        <input type="text" id="couponCodeInput" placeholder="Enter coupon (Try: FRESH10)" uppercase>
+        <button class="btn btn-sm btn-outline" onclick="app.applyCoupon()">Apply</button>
+      </div>
+      <div id="couponMessage" class="coupon-msg"></div>
+
+      <div class="cart-summary-lines">
+        <div class="summary-line">
+          <span>Subtotal</span>
+          <span id="cartSubtotal">Rs. 0</span>
+        </div>
+        <div class="summary-line" id="discountLine" style="display: none;">
+          <span class="text-success">Discount (<span id="discountPercent">0%</span>)</span>
+          <span class="text-success" id="cartDiscount">- Rs. 0</span>
+        </div>
+        <div class="summary-line">
+          <span>Estimated Delivery</span>
+          <span id="cartDeliveryFee">Rs. 250</span>
+        </div>
+        <div class="summary-line total-line">
+          <span>Total Amount</span>
+          <strong id="cartTotal">Rs. 0</strong>
+        </div>
+      </div>
+
+      <!-- Order Buttons -->
+      <div class="cart-action-buttons">
+        <button class="btn btn-whatsapp-full btn-lg" onclick="app.openCheckoutModal('whatsapp')">
+          <i class="fa-brands fa-whatsapp"></i> Order Via WhatsApp
+        </button>
+        <button class="btn btn-primary btn-block" onclick="app.openCheckoutModal('cod')">
+          <i class="fa-solid fa-truck-fast"></i> Proceed to Checkout (COD)
+        </button>
+      </div>
+
+      <div class="cart-security-badge">
+        <i class="fa-solid fa-shield-halved"></i> 100% Freshness Guarantee &bull; Cash/Card on Delivery
+      </div>
+    </div>
+  </aside>
+  <div class="cart-overlay" id="cartOverlay"></div>
+
+  <!-- Product Quick View Modal -->
+  <div class="modal" id="quickViewModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <button class="modal-close" onclick="app.closeQuickView()">&times;</button>
+      <div class="modal-body quick-view-content" id="quickViewContent">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout & WhatsApp Order Modal -->
+  <div class="modal" id="checkoutModal" aria-hidden="true">
+    <div class="modal-dialog checkout-dialog">
+      <button class="modal-close" onclick="app.closeCheckoutModal()">&times;</button>
+      <div class="modal-body">
+        <div class="checkout-modal-header">
+          <i class="fa-solid fa-receipt modal-header-icon"></i>
+          <div>
+            <h3 id="checkoutModalTitle">Complete Your Order</h3>
+            <p>Tell us where to deliver your fresh chicken</p>
+          </div>
+        </div>
+
+        <form id="checkoutForm" onsubmit="app.processCheckout(event)">
+          <div class="form-group">
+            <label for="orderCustomerName">Your Full Name *</label>
+            <input type="text" id="orderCustomerName" required placeholder="e.g. Kasun Fernando">
+          </div>
+
+          <div class="form-group">
+            <label for="orderCustomerPhone">Contact Phone Number *</label>
+            <input type="tel" id="orderCustomerPhone" required placeholder="075 772 8547">
+          </div>
+
+          <div class="form-group">
+            <label for="orderDeliveryType">Fulfillment Option</label>
+            <select id="orderDeliveryType" onchange="app.handleDeliveryTypeChange()">
+              <option value="delivery">Express Home Delivery (Within 60 mins)</option>
+              <option value="pickup">Self-Pickup at Ranjani Farm Shop Counter</option>
+            </select>
+          </div>
+
+          <div class="form-group" id="addressGroup">
+            <label for="orderCustomerAddress">Delivery Address & Landmark *</label>
+            <textarea id="orderCustomerAddress" rows="2" placeholder="House No, Street, Landmark, Town"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="orderCutInstructions">Custom Cutting Preferences (Optional)</label>
+            <input type="text" id="orderCutInstructions" placeholder="e.g. Biryani size pieces, skinless, less fat">
+          </div>
+
+          <div class="form-group">
+            <label for="orderPaymentMethod">Payment Preference</label>
+            <select id="orderPaymentMethod">
+              <option value="Cash on Delivery">Cash on Delivery (COD)</option>
+              <option value="Card/POS Machine at Doorstep">Card on Delivery (Mobile POS Machine)</option>
+              <option value="Online Bank Transfer / QR">Bank Transfer / QR Pay</option>
+            </select>
+          </div>
+
+          <div class="order-summary-mini" id="checkoutMiniSummary">
+            <!-- Summary inserted by JS -->
+          </div>
+
+          <div class="checkout-actions">
+            <button type="submit" class="btn btn-whatsapp-full btn-lg" id="checkoutSubmitBtn">
+              <i class="fa-brands fa-whatsapp"></i> Confirm & Send Order to WhatsApp
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leave Review Modal -->
+  <div class="modal" id="reviewModal" aria-hidden="true">
+    <div class="modal-dialog">
+      <button class="modal-close" onclick="app.closeReviewModal()">&times;</button>
+      <div class="modal-body">
+        <div class="checkout-modal-header">
+          <i class="fa-solid fa-star modal-header-icon star-icon"></i>
+          <div>
+            <h3>Share Your Experience</h3>
+            <p>Your honest review helps Ranjani Farm keep serving the best quality!</p>
+          </div>
+        </div>
+
+        <form id="reviewForm" onsubmit="app.handleReviewSubmit(event)">
+          <div class="form-group">
+            <label for="revName">Your Name *</label>
+            <input type="text" id="revName" required placeholder="e.g. Anusha Perera">
+          </div>
+
+          <div class="form-group">
+            <label for="revCut">Which cut did you purchase? *</label>
+            <select id="revCut">
+              <option value="Curry Cut">Signature Curry Cut</option>
+              <option value="Boneless Breast">Boneless Breast</option>
+              <option value="Drumsticks">Chicken Drumsticks</option>
+              <option value="Country Chicken">Country / Free-Range Chicken</option>
+              <option value="Farm Eggs">Farm Fresh Eggs</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Star Rating *</label>
+            <div class="star-rating-select" id="starRatingSelect">
+              <i class="fa-solid fa-star" data-rating="1"></i>
+              <i class="fa-solid fa-star" data-rating="2"></i>
+              <i class="fa-solid fa-star" data-rating="3"></i>
+              <i class="fa-solid fa-star" data-rating="4"></i>
+              <i class="fa-solid fa-star active" data-rating="5"></i>
+            </div>
+            <input type="hidden" id="revRating" value="5">
+          </div>
+
+          <div class="form-group">
+            <label for="revComment">Your Comments *</label>
+            <textarea id="revComment" rows="3" required placeholder="Tell us about the freshness, packaging, and taste..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">
+            <i class="fa-solid fa-paper-plane"></i> Submit Review
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification System -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>
