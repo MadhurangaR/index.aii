@@ -21,7 +21,17 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="ai-theme">
+
+  <!-- AI Futuristic Neural & Cyber Background Layer -->
+  <div class="ai-background-wrapper" id="aiBackgroundWrapper" aria-hidden="true">
+    <canvas id="aiNeuralCanvas" class="ai-neural-canvas"></canvas>
+    <div class="ai-cyber-grid"></div>
+    <div class="ai-glowing-orb orb-1"></div>
+    <div class="ai-glowing-orb orb-2"></div>
+    <div class="ai-glowing-orb orb-3"></div>
+    <div class="ai-cyber-vignette"></div>
+  </div>
 
   <!-- Top Announcement Bar -->
   <aside class="top-bar" aria-label="Store Announcement">
@@ -74,6 +84,12 @@
 
       <!-- Header Action Buttons -->
       <div class="header-actions">
+        <!-- AI Theme Toggle Button -->
+        <button class="ai-theme-toggle-btn active" id="aiThemeToggleBtn" title="Toggle AI Futuristic Theme / Classic Mode" aria-label="Toggle AI Theme">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <span class="ai-toggle-text">AI Mode</span>
+        </button>
+
         <div class="header-live-badge" id="headerShopStatus" title="Store Hours: 07:00 - 21:00">
           <span class="status-live-dot"></span>
           <span class="status-live-text">07:00 – 09:00 PM</span>
@@ -122,6 +138,12 @@
       <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close menu">&times;</button>
     </div>
     <div class="drawer-status-box" id="drawerShopStatus"></div>
+    <div class="drawer-ai-toggle-row">
+      <span><i class="fa-solid fa-microchip"></i> AI Cyber Theme</span>
+      <button class="drawer-toggle-switch active" id="drawerAiToggleBtn" aria-label="Toggle AI Cyber Theme">
+        <span class="switch-ball"></span>
+      </button>
+    </div>
     <ul class="drawer-links">
       <li><a href="#home" class="drawer-link"><i class="fa-solid fa-house"></i> Home</a></li>
       <li><a href="#products" class="drawer-link"><i class="fa-solid fa-drumstick-bite"></i> Fresh Cuts & Shop</a></li>
