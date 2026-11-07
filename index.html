@@ -27,9 +27,14 @@
   <aside class="top-bar" aria-label="Store Announcement">
     <div class="container top-bar-content">
       <div class="top-bar-left">
-        <span><i class="fa-solid fa-clock"></i> Today's Fresh Slaughter Batch: <strong>Arrived at 6:00 AM</strong></span>
+        <span class="shop-live-status-pill" id="topShopStatus">
+          <span class="status-live-dot"></span>
+          <span class="status-live-text">Checking hours...</span>
+        </span>
         <span class="divider">|</span>
-        <span><i class="fa-solid fa-shield-halved"></i> 100% Antibiotic-Free & Chemical-Free</span>
+        <span><i class="fa-solid fa-clock"></i> Daily Hours: <strong>07:00 AM – 09:00 PM</strong></span>
+        <span class="divider">|</span>
+        <span><i class="fa-solid fa-shield-halved"></i> 100% Antibiotic-Free</span>
       </div>
       <div class="top-bar-right">
         <a href="tel:0757728547" class="top-contact"><i class="fa-solid fa-phone"></i> 075 772 8547</a>
@@ -69,6 +74,11 @@
 
       <!-- Header Action Buttons -->
       <div class="header-actions">
+        <div class="header-live-badge" id="headerShopStatus" title="Store Hours: 07:00 - 21:00">
+          <span class="status-live-dot"></span>
+          <span class="status-live-text">07:00 – 09:00 PM</span>
+        </div>
+
         <button class="search-toggle-btn" id="searchToggleBtn" title="Search Products" aria-label="Toggle Search">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
@@ -111,6 +121,7 @@
       </div>
       <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close menu">&times;</button>
     </div>
+    <div class="drawer-status-box" id="drawerShopStatus"></div>
     <ul class="drawer-links">
       <li><a href="#home" class="drawer-link"><i class="fa-solid fa-house"></i> Home</a></li>
       <li><a href="#products" class="drawer-link"><i class="fa-solid fa-drumstick-bite"></i> Fresh Cuts & Shop</a></li>
@@ -542,9 +553,18 @@
 
             <div class="contact-detail-item">
               <div class="detail-icon"><i class="fa-solid fa-clock"></i></div>
-              <div>
-                <strong>Opening Hours (7 Days a Week)</strong>
-                <p>Monday – Saturday: 6:00 AM – 8:30 PM<br>Sunday: 6:00 AM – 3:00 PM (Special Sunday Cuts)</p>
+              <div class="contact-hours-wrap">
+                <div class="hours-header-flex">
+                  <strong>Shop Operating Hours (7 Days a Week)</strong>
+                  <div class="shop-hours-live-tag" id="contactShopStatus">
+                    <span class="status-live-dot"></span>
+                    <span class="status-live-text">Live Status</span>
+                  </div>
+                </div>
+                <p class="hours-schedule">Open Daily: <strong>07:00 AM – 09:00 PM (07:00 – 21:00)</strong></p>
+                <div class="live-clock-sub" id="liveClockSub">
+                  <i class="fa-regular fa-clock"></i> Live Outlet Clock: <strong id="currentLocalClock">--:--</strong>
+                </div>
               </div>
             </div>
 
@@ -845,6 +865,8 @@
             <p>Tell us where to deliver your fresh chicken</p>
           </div>
         </div>
+
+        <div id="checkoutStoreStatusNote" class="store-status-checkout-note"></div>
 
         <form id="checkoutForm" onsubmit="app.processCheckout(event)">
           <div class="form-group">
